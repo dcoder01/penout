@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+
+        <title>Add New Blog</title>
+</head>
+
+<body>
+    <%- include('./partials/navbar') %>
+
+    <div class="container mt-3">
+        <% if (typeof error_msg !== 'undefined' && error_msg.length > 0) { %>
+            <div class="alert alert-danger">
+                <%= error_msg %>
+            </div>
+        <% } %>
+    </div>
+   
+        <div class="container mt-4">
+            <form action="/blog" method="POST" enctype="multipart/form-data">
+
+
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title*</label>
+                    <input type="text" class="form-control" id="title" name="title" aria-describedby="title">
+                </div>
+                <div class="mb-3">
+                    <label for="body" class="form-label">Body*</label>
+                    <textarea name="body" class="form-control" id="body" rows="8"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="coverImage">CoverImage</label>
+                    <input type="file" name="coverImage" class="form-control" id="coverImage">
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+
+        </div>
+
+        <%- include('./partials/scripts') %>
+</body>
+
+</html>

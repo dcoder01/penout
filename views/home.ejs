@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+    <title>homepage</title>
+    <style>
+        .card-img-top {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            aspect-ratio: 4 / 3; 
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+        }
+        .card-body .btn {
+            margin-top: auto; /* Pushes the button to the bottom */
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('./partials/navbar') %>
+
+    <div class="container mt-4">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <% blogs.forEach(blog => { %>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="/uploads/<%= blog.coverImageURL %>" class="card-img-top" alt="<%= blog.title %>">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= blog.title %></h5>
+                            <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+    <%- include('./partials/scripts') %>
+</body>
+
+</html>

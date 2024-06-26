@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+    <title>blogs</title>
+    <style>
+        .image-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .image-wrapper img {
+            width: 50%; 
+            max-width: 100%; 
+            height: auto; 
+
+        }
+
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .comment {
+            display: flex;
+            /* align-items: center; */
+            margin-bottom: 1rem;
+        }
+
+        .comment img {
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('./partials/navbar') %>
+
+    <div class="container mt-4">
+        <h1><%= blog.title %></h1>
+        <div class="image-wrapper">
+            <img src="/uploads/<%= blog.coverImageURL %>" alt="Blog Cover Image">
+        </div>
+        <p><%= blog.body %></p>
+        <div class="comment">
+            <img src="<%= blog.createdBy.profileImageURL %>" class="profile-img" alt="Profile Image">
+            <div>
+                <a class="dropdown-item" href="/user/profile/<%= blog.createdBy._id %>"><strong><%= blog.createdBy.fullName %></strong></a>
+                <p>Author</p>
+               
+           </div>
+        </div>
+
+        <div class="mt-3">
+            <h1>Comments (<%= comments.length %>)</h1>
+            <% if (locals.user) { %>
+            <form action="/blog/comment/<%= blog._id %>" method="POST">
+                <div class="mb-3">
+                    <label for="content" class="form-label">Add Comment</label>
+                    <input type="text" name="content" class="form-control" id="content">
+                </div>
+                <button type="submit" class="btn btn-primary">Post</button>
+            </form>
+            <% } %>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <% comments.forEach(comment => { %>
+        <div class="comment">
+            
+            <a href="/user/profile/<%= comment.createdBy._id %>"><img src="<%= comment.createdBy.profileImageURL %>" class="profile-img" alt="Profile Image"></a>
+            <div>
+                <a class="dropdown-item" href="/user/profile/<%= comment.createdBy._id %>"><strong><%= comment.createdBy.fullName %></strong></a></li>
+                
+                <p><%= comment.content %></p>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+
+    <%- include('./partials/scripts') %>
+</body>
+
+</html>

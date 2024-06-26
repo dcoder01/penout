@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+        <style>
+            .profile-container,
+            h1,
+            a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .profileimage {
+                width: 200px;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 50px;
+            }
+
+            .btn-container {
+                display: flex;
+                /* flex-direction: column; */
+                justify-content: center;
+                align-items: center;
+            }
+
+            #changeProfileBtn {
+                margin-top: 20px;
+            }
+        </style>
+        <title>Profile Page</title>
+</head>
+
+<body>
+    <%- include('./partials/navbar') %>
+        <div class="container mt-4">
+            <h1>
+                <%= user.fullName %>
+            </h1>
+            <div class="profile-container mt-4">
+                <img src="<%= user.profileImageURL %>" alt="Profile Image" class="profileimage img-fluid">
+            </div>
+            <% if (editable) { %>
+
+
+                <div class="profile-container mt-4">
+
+                    <button id="changeProfileBtn" class="mt-4 btn btn-primary" type="button">
+                        Change Profile Photo
+                    </button>
+
+                    <div id="profileForm" style="display: none;">
+                        <form action="/user/profile" method="POST" enctype="multipart/form-data">
+                            <div class="mb-4">
+                                <label class="form-label" for="profileImage">Profile Image</label>
+                                <input type="file" name="profileImage" class="form-control" id="profileImage">
+                            </div>
+                            <div class="btn-container mb-3">
+                                <button class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+
+
+
+                </div>
+
+
+                <% } %>
+
+                    <div class="btn-container">
+                        <a href="/user/blogs/<%= user._id %>" class="btn btn-primary mt-4">
+                            View Blogs
+                        </a>
+                    </div>
+        </div>
+
+        <%- include('./partials/scripts') %>
+            <script>
+                document.getElementById('changeProfileBtn').addEventListener('click', function () {
+                    const profileForm = document.getElementById('profileForm');
+                    // Toggle the visibility of the profile form
+                    if (profileForm.style.display === 'none') {
+                        profileForm.style.display = 'block';
+                    } else {
+                        profileForm.style.display = 'none';
+                    }
+                });
+            </script>
+</body>
+
+</html>
