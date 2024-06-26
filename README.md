@@ -37,9 +37,6 @@ A simple blog application built with Express, MongoDB, EJS, and Bootstrap.
 1. Open your browser and go to `http://localhost:3001`.
 2. You can now create, edit, delete, and comment on blog posts.
 
-## Screenshots
-
-- ![Screenshot 2024-06-27 020319](https://github.com/dcoder01/penout/assets/115918228/f1082050-e347-43a0-ae43-44e1bc1cf4a5)
 
 
 
