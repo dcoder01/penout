@@ -1,4 +1,4 @@
-# Penup
+# Penout
 
 A simple blog application built with Express, MongoDB, EJS, and Bootstrap.
 
@@ -13,7 +13,7 @@ A simple blog application built with Express, MongoDB, EJS, and Bootstrap.
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/dcoder01/penup.git
+    git clone https://github.com/dcoder01/penout.git
     ```
 2. Navigate to the project directory:
     ```sh
