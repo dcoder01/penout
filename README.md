@@ -39,7 +39,8 @@ A simple blog application built with Express, MongoDB, EJS, and Bootstrap.
 
 ## Screenshots
 
-- ![Screenshot 1](link)
+- ![Screenshot 2024-06-27 020319](https://github.com/dcoder01/penout/assets/115918228/f1082050-e347-43a0-ae43-44e1bc1cf4a5)
+
 
 
 ## License
