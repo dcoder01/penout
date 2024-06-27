@@ -4,9 +4,10 @@ A simple blog application built with Express, MongoDB, EJS, and Bootstrap.
 
 ## Features
 - Create, read, update, and delete blog posts
+- Password encryption using `crypto`
+- Partials in EJS for reusable components
 - Users can comment on a particular post and provide feedback to the author
 - Responsive design using Bootstrap
-- Partials in EJS for reusable components
 - Users can show the blogs of the other users by clicking on his profile
 - Logged in users can update their profile photos under the profile section.
 ## Installation
